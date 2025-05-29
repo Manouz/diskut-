@@ -1,0 +1,155 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adje.soro.diakite.diskut.reunions.controller.MainController">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: #1976d2;" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Réunions Virtuelles" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="userLabel" text="Utilisateur (État)" textFill="WHITE">
+                    <HBox.margin>
+                        <Insets left="20.0" />
+                    </HBox.margin>
+                </Label>
+                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#handleDeconnexionButton" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" text="Déconnexion" />
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            </padding>
+        </HBox>
+    </top>
+    <center>
+        <TabPane fx:id="mainTabPane" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab text="Mes Réunions">
+                    <content>
+                        <BorderPane>
+                            <center>
+                                <TableView fx:id="reunionsTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                    <columns>
+                                        <TableColumn fx:id="nomColumn" prefWidth="200.0" text="Nom" />
+                                        <TableColumn fx:id="sujetColumn" prefWidth="200.0" text="Sujet" />
+                                        <TableColumn fx:id="dateColumn" prefWidth="150.0" text="Date" />
+                                        <TableColumn fx:id="typeColumn" prefWidth="100.0" text="Type" />
+                                        <TableColumn fx:id="etatColumn" prefWidth="100.0" text="État" />
+                                    </columns>
+                                </TableView>
+                            </center>
+                            <bottom>
+                                <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+                                    <children>
+                                        <Button fx:id="ouvrirButton" mnemonicParsing="false" onAction="#handleOuvrirButton" style="-fx-background-color: #4caf50; -fx-text-fill: white;" text="Ouvrir" />
+                                        <Button fx:id="fermerButton" mnemonicParsing="false" onAction="#handleFermerButton" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Fermer" />
+                                        <Button fx:id="entrerButton" mnemonicParsing="false" onAction="#handleEntrerButton" style="-fx-background-color: #2196f3; -fx-text-fill: white;" text="Entrer" />
+                                        <Button fx:id="sortirButton" mnemonicParsing="false" onAction="#handleSortirButton" style="-fx-background-color: #ff9800; -fx-text-fill: white;" text="Sortir" />
+                                        <Button fx:id="detailsButton" mnemonicParsing="false" onAction="#handleDetailsButton" style="-fx-background-color: #9e9e9e; -fx-text-fill: white;" text="Détails" />
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </padding>
+                                </HBox>
+                            </bottom>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                        </BorderPane>
+                    </content>
+                </Tab>
+                <Tab text="Planifier une Réunion">
+                    <content>
+                        <BorderPane>
+                            <center>
+                                <VBox spacing="15.0" BorderPane.alignment="CENTER">
+                                    <children>
+                                        <HBox spacing="10.0">
+                                            <children>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Nom de la réunion" />
+                                                        <TextField fx:id="nomReunionField" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Type de réunion" />
+                                                        <ComboBox fx:id="typeReunionCombo" prefWidth="150.0" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+                                        <VBox spacing="5.0">
+                                            <children>
+                                                <Label text="Sujet" />
+                                                <TextField fx:id="sujetReunionField" />
+                                            </children>
+                                        </VBox>
+                                        <HBox spacing="10.0">
+                                            <children>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Date" />
+                                                        <DatePicker fx:id="dateReunionPicker" prefWidth="150.0" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Heure (HH:MM)" />
+                                                        <TextField fx:id="heureReunionField" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Durée (minutes)" />
+                                                        <TextField fx:id="dureeReunionField" text="60" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+                                        <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+                                            <children>
+                                                <Label text="Ordre du jour" />
+                                                <TextArea fx:id="ordreJourArea" prefHeight="200.0" prefWidth="200.0" promptText="1. Point 1&#10;2. Point 2&#10;3. Questions diverses" />
+                                            </children>
+                                        </VBox>
+                                        <Button fx:id="planifierButton" defaultButton="true" mnemonicParsing="false" onAction="#handlePlanifierButton" prefHeight="40.0" style="-fx-background-color: #1976d2; -fx-text-fill: white;" text="Planifier la réunion">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Button>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                    </padding>
+                                </VBox>
+                            </center>
+                        </BorderPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>
