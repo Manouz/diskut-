@@ -41,7 +41,7 @@ public class LoginController {
         Personne utilisateur = reunionService.connecter(login, password);
         if (utilisateur != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/adje/soro/diakite/diskut/MainView.fxml"));
                 Parent root = loader.load();
 
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

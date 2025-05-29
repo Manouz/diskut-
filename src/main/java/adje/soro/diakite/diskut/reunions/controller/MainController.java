@@ -303,7 +303,7 @@ public class MainController implements Initializable {
     private void handleDeconnexionButton(ActionEvent event) {
         reunionService.deconnecter();
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginView.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/adje/soro/diakite/diskut/LoginView.fxml"));
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             stage.setTitle("Serveur de Réunions Virtuelles");
             stage.setScene(new Scene(root, 600, 400));

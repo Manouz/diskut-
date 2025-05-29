@@ -6,9 +6,13 @@ import adje.soro.diakite.diskut.reunions.model.Reunion;
 import adje.soro.diakite.diskut.reunions.service.ReunionService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -205,5 +209,23 @@ public class ReunionController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void ouvrirFenetreReunion(Reunion reunion) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/adje/soro/diakite/diskut/ReunionView.fxml"));
+            Parent root = loader.load();
+
+            ReunionController controller = loader.getController();
+            controller.initialiserReunion(reunion);
+
+            Stage stage = new Stage();
+            stage.setTitle("Réunion: " + reunion.getNom());
+            stage.setScene(new Scene(root, 800, 600));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            afficherErreur("Erreur", "Impossible d'ouvrir la fenêtre de réunion.");
+        }
     }
 }
